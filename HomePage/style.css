@@ -91,12 +91,12 @@ section img
 #text
 {
   position: absolute;
-  transform: translateY(-50%);
+  transform: translateY(-100%);
   color: #111;
   white-space: nowrap;
   font-size: 10vw;
   text-align: center;
-  line-height: 0.55em;
+  line-height: 0.5em;
   color: #094b65;
   font-family: 'Rancho', cursive;
 }
