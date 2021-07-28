@@ -8,6 +8,8 @@ class User extends Model {
   }
 }
 
+// User - id(pk), username, password, user_instrument(fk), user_genre(fk), content, photo_str, connections(fk),
+
 User.init(
   {
     id: {
@@ -16,23 +18,47 @@ User.init(
       primaryKey: true,
       autoIncrement: true,
     },
-    name: {
+    username: {
       type: DataTypes.STRING,
       allowNull: false,
-    },
-    email: {
-      type: DataTypes.STRING,
-      allowNull: false,
-      unique: true,
-      validate: {
-        isEmail: true,
-      },
     },
     password: {
       type: DataTypes.STRING,
       allowNull: false,
       validate: {
         len: [8],
+      },
+    },
+    user_instrument: {
+      type: DataTypes.STRING,
+      allowNull: true,
+      references: {
+        model: 'instrument',
+        key: 'id',
+      },
+    },
+    user_genre: {
+      type: DataTypes.STRING,
+      allowNull: true,
+      references: {
+        model: 'genre',
+        key: 'id',
+      },
+    },
+    content: {
+      type: DataTypes.STRING,
+      allowNull: true,
+    },
+    photo_str: {
+      type: DataTypes.STRING,
+      allowNull: true,
+    },
+    connections: {
+      type: DataTypes.ARRAY,
+      allowNull: true,
+      references: {
+        model: 'connections',
+        key: 'id',
       },
     },
   },
@@ -43,7 +69,10 @@ User.init(
         return newUserData;
       },
       beforeUpdate: async (updatedUserData) => {
-        updatedUserData.password = await bcrypt.hash(updatedUserData.password, 10);
+        updatedUserData.password = await bcrypt.hash(
+          updatedUserData.password,
+          10
+        );
         return updatedUserData;
       },
     },
