@@ -1,0 +1,50 @@
+<!doctype html>
+<html>
+  <head>
+    <title>Find Your Match</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+  </head>
+  <body>
+    <header id="header">
+      <a href="#" class="logo">Timbre</a>
+      <ul>
+        <li><a href="#" class="active">Home</a></li>
+        <li><a href="#">Profile</a></li>
+        <li><a href="#">Matches</a></li>
+        <li><a href="#">Collaboration</a></li>
+      </ul>
+    </header>
+    <section>
+      <h2 id="text"><span>Find your Match</span></br>Timbre</h2>
+      <img src="note.png" id="note">
+      <img src="note2.png" id="note2">
+      <img src="croud.png" id="croud">
+      <a href="#sec" id="btn">Login</a>
+    </section>
+    <div class="sec" id="sec">
+      <h2>Tinder for Musicians: Timbre</h2>
+      <p> Find your perfect match </p>
+    </div>
+
+    <script>
+      let croud = document.getElementById('croud');
+      let note = document.getElementById('note');
+      let note2 = document.getElementById('note2');
+      let text = document.getElementById('text');
+      let btn = document.getElementById('btn');
+      let header = document.getElementById('header');
+
+      window.addEventListener('scroll', function(){
+        let value = window.scrollY;
+        croud.style.top = value * 0.25 + 'px';
+        text.style.top = 50 + value * -0.5 + '%';
+        btn.style.marginTop = value * 1.5 + 'px';
+        header.style.top = value * 0.5 + 'px';
+        note.style.top = value * -1.5 + 'px';
+        note.style.left = value * 2 + 'px';
+        note2.style.top = value * -1.5 + 'px';
+        note2.style.left = value * -8 + 'px';
+      })
+    </script>
+  </body>
+</html>
