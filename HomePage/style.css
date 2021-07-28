@@ -91,7 +91,7 @@ section img
 #text
 {
   position: absolute;
-  transform: translateY(-50%);
+  transform: translateY(-80%);
   color: #111;
   white-space: nowrap;
   font-size: 10vw;
