@@ -114,6 +114,7 @@ section img
   text-decoration: none;
   display: inline-block;
   padding: 8px 30px;
+  border: 2px solid #094b65;
   border-radius: 40px;
   background: #fff;
   color: #094b65;
