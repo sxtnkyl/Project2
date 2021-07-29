@@ -1,8 +1,5 @@
 const router = require('express').Router();
-const User  = require('../../models');
-const Connection = require('./models/Connections.js');
-const Genre = require('../models/Genre');
-const Instrument = require('../models/Instrument');
+const User = require('../../models');
 
 //===== login =====//
 router.post('/login', async (req, res) => {
@@ -28,7 +25,7 @@ router.post('/login', async (req, res) => {
     req.session.save(() => {
       req.session.user_id = userData.id;
       req.session.logged_in = true;
-      
+
       res.json({ user: userData, message: 'You are now logged in!' });
     });
 
@@ -73,5 +70,25 @@ router.post('/logout', (req, res) => {
     res.status(404).end();
   }
 });
+
+//==== user filter ====//
+router.get('/api/user', async (req, res) => {
+  const userInstrument = req.query.userInstrument;
+  const userGenre = req.query.userGenre;
+  const userContent = req.query.userContent;
+  const userPhoto = req.query.userPhoto;
+  const userConnections = req.query.connections;
+
+  const userData = await User.findAll({
+    where: {
+      user_instrument: userInstrument,
+      user_genre: userGenre,
+      content: userContent,
+      photo_str: userPhoto,
+      connectionsList: userConnections,
+    }
+  });
+});
+
 
 module.exports = router;
