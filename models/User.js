@@ -8,7 +8,7 @@ class User extends Model {
   }
 }
 
-// User - id(pk), username, password, user_instrument(fk), user_genre(fk), content, photo_str, connections(fk),
+// == User - id(pk), username, password, user_instrument(fk), user_genre(fk), content, photo_str, connections(fk),==//
 
 User.init(
   {
