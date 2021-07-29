@@ -6,8 +6,7 @@
     "user_instrument": 5,
     "user_genre": 5,
     "content": "temp descrip",
-    "photo_str": "tempString",
-    "connectionsList": 1
+    "photo_str": "tempString"
   },
   {
     "name": "Needa",
@@ -16,8 +15,7 @@
     "user_instrument": 1,
     "user_genre": 1,
     "content": "temp descrip",
-    "photo_str": "tempString",
-    "connectionsList": 2
+    "photo_str": "tempString"
   },
   {
     "name": "Eagle",
@@ -26,8 +24,7 @@
     "user_instrument": 2,
     "user_genre": 2,
     "content": "temp descrip",
-    "photo_str": "tempString",
-    "connectionsList": 3
+    "photo_str": "tempString"
   },
   {
     "name": "Will",
@@ -36,7 +33,6 @@
     "user_instrument": 3,
     "user_genre": 3,
     "content": "temp descrip",
-    "photo_str": "tempString",
-    "connectionsList": 4
+    "photo_str": "tempString"
   }
 ]

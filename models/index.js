@@ -17,9 +17,13 @@ Genre.hasMany(User, {
   foreignKey: 'user_genre',
 });
 
-// User.hasMany(Connections, {
-//   foreignKey: 'target_id',
-//   onDelete: 'CASCADE',
-// });
+User.hasMany(Connections, {
+  foreignKey: 'user_id',
+  onDelete: 'CASCADE',
+});
+User.hasMany(Connections, {
+  foreignKey: 'target_id',
+  onDelete: 'CASCADE',
+});
 
 module.exports = { User, Instrument, Genre, Connections };

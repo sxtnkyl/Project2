@@ -8,14 +8,14 @@ const connectionData = require('./connectionData.json');
 
 const seedDatabase = async () => {
   await sequelize.sync({ force: true });
-
+  //DO YOUR STATIC TABLES FIRST
   const instruments = await Instrument.bulkCreate(instrumentData);
   const genres = await Genre.bulkCreate(genreData);
-  const connects = await Connections.bulkCreate(connectionData);
   const users = await User.bulkCreate(userData, {
     // individualHooks: true,
     // returning: true,
   });
+  const connects = await Connections.bulkCreate(connectionData);
 
   process.exit(0);
 };

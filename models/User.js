@@ -53,20 +53,6 @@ User.init(
       type: DataTypes.STRING,
       allowNull: true,
     },
-    connectionsList: {
-      type: DataTypes.INTEGER,
-      allowNull: true,
-      get() {
-        return this.getDataValue('connectionsList').split(';');
-      },
-      set(val) {
-        this.setDataValue('connectionsList', val.join(';'));
-      },
-      references: {
-        model: 'connections',
-        key: 'user_id',
-      },
-    },
   },
   {
     hooks: {
