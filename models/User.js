@@ -30,7 +30,7 @@ User.init(
       },
     },
     user_instrument: {
-      type: DataTypes.STRING,
+      type: DataTypes.INTEGER,
       allowNull: true,
       references: {
         model: 'instrument',
@@ -38,7 +38,7 @@ User.init(
       },
     },
     user_genre: {
-      type: DataTypes.STRING,
+      type: DataTypes.INTEGER,
       allowNull: true,
       references: {
         model: 'genre',
@@ -53,13 +53,19 @@ User.init(
       type: DataTypes.STRING,
       allowNull: true,
     },
-    connections: {
-      type: DataTypes.ARRAY,
+    connectionsList: {
+      type: DataTypes.INTEGER,
       allowNull: true,
-      references: {
-        model: 'connections',
-        key: 'id',
-      },
+      // get() {
+      //   return this.getDataValue('connectionsList').split(';');
+      // },
+      // set(val) {
+      //   this.setDataValue('connectionsList', val.join(';'));
+      // },
+      // references: {
+      //   model: 'connections',
+      //   key: 'user_id',
+      // },
     },
   },
   {

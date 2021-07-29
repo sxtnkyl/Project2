@@ -3,15 +3,23 @@ const Instrument = require('./Instrument');
 const Genre = require('./Genre');
 const Connections = require('./Connections');
 
-User.hasOne(Instrument, {
+User.belongsTo(Instrument, {
   foreignKey: 'user_instrument',
 });
-User.hasOne(Genre, {
-  foreignKey: 'user_genre',
-});
-User.hasMany(Connections, {
-  foreignKey: 'user_id',
-  onDelete: 'CASCADE',
+Instrument.hasMany(User, {
+  foreignKey: 'user_instrument',
 });
 
-module.exports = { User };
+User.belongsTo(Genre, {
+  foreignKey: 'user_genre',
+});
+Genre.hasMany(User, {
+  foreignKey: 'user_genre',
+});
+
+// User.hasMany(Connections, {
+//   foreignKey: 'target_id',
+//   onDelete: 'CASCADE',
+// });
+
+module.exports = { User, Instrument, Genre, Connections };
