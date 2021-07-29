@@ -1,17 +1,38 @@
 [
   {
-    "name": "Sal",
-    "email": "sal@hotmail.com",
-    "password": "password12345"
+    "name": "Kyle",
+    "username": "kyle@aol.com",
+    "password": "password12345",
+    "user_instrument": 5,
+    "user_genre": 5,
+    "content": "temp descrip",
+    "photo_str": "tempString"
   },
   {
-    "name": "Lernantino",
-    "email": "lernantino@gmail.com",
-    "password": "password12345"
+    "name": "Needa",
+    "username": "needa@aol.com",
+    "password": "password12345",
+    "user_instrument": 1,
+    "user_genre": 1,
+    "content": "temp descrip",
+    "photo_str": "tempString"
   },
   {
-    "name": "Amiko",
-    "email": "amiko2k20@aol.com",
-    "password": "password12345"
+    "name": "Eagle",
+    "username": "eagle@aol.com",
+    "password": "password12345",
+    "user_instrument": 2,
+    "user_genre": 2,
+    "content": "temp descrip",
+    "photo_str": "tempString"
+  },
+  {
+    "name": "Will",
+    "username": "will@aol.com",
+    "password": "password12345",
+    "user_instrument": 3,
+    "user_genre": 3,
+    "content": "temp descrip",
+    "photo_str": "tempString"
   }
 ]
