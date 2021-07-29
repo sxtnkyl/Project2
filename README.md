@@ -37,7 +37,7 @@ POST /API/Connection/user_id&:target_id //what is route for// does this create n
 POST /LOGIN -create user
 ```
 ```
-PUT /API/User/:data
+PUT /API/User/:id/:data
 ```
 ```
 DELETE /API/Connections/:target_id - on rejection

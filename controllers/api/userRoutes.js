@@ -1,4 +1,5 @@
 const router = require('express').Router();
+const { response } = require('express');
 const User = require('../../models');
 
 //===== login =====//
@@ -88,6 +89,40 @@ router.get('/api/user', async (req, res) => {
       connectionsList: userConnections,
     }
   });
+});
+
+//==== update user info ====//
+router.put('/user/:id/:data', async (req, res) => {
+  const user = await User.findByPk(req.params.id, { attributes: { exclude: ['password'] } })
+  if (!user) {
+    res
+      .status(500)
+      .json({ message: 'Error getting user id' });
+    return;
+  }
+
+  const userInstrument = req.query.userInstrument;
+  const userGenre = req.query.userGenre;
+  const userContent = req.query.userContent;
+  const userPhoto = req.query.userPhoto;
+
+  const result = await user.update({
+    user_instrument: userInstrument,
+    user_genre: userGenre,
+    content: userContent,
+    photo_str: userPhoto,
+  });
+
+  //==== update succesfful if one row was effected else resturn 400 status ====//
+  if (result[0] === 1) {
+    res
+      .status(201)
+  } else {
+    res
+      .status(400)
+      .json({ message: 'Error getting user id' });
+    return;
+  }
 });
 
 
