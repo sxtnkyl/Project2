@@ -30,10 +30,10 @@ TABLES - columns
 GET /API/User/ -all users (or first so many)
 GET /API/User/:id -get single user info
 GET /API/User/ -with filters > req.body
-GET /API/Connections/:user_id -user_id = target_id
+GET /API/Connections/user/:user_id -user_id = target_id
 ```
 ```
-POST /API/Connection/user_id&:target_id
+POST /API/Connection/user_id&:target_id //what is route for// does this create new connections?
 POST /LOGIN -create user
 ```
 ```
