@@ -24,7 +24,7 @@ const sess = {
   }),
 };
 app.get("/*", (req, res) => {
-  res.sendFile(path.resolve(__dirname, "HomePage", "index.html"));
+  res.sendFile(path.resolve(__dirname, "public", "index.html"));
 });
 app.use(session(sess));
 
