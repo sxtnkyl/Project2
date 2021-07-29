@@ -23,7 +23,9 @@ const sess = {
     db: sequelize
   })
 };
-
+app.get("/*", (req, res) => {
+  res.sendFile(path.resolve(__dirname, "HomePage", "index.html"));
+});
 app.use(session(sess));
 
 // Inform Express.js on which template engine to use
