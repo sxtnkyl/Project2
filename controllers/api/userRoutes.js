@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const { User } = require('../../models');
+const User  = require('../../models');
 const Connection = require('./models/Connections.js');
 const Genre = require('../models/Genre');
 const Instrument = require('../models/Instrument');
@@ -63,27 +63,6 @@ router.get('/user/:id', async (req, res) => {
 
   res.send(user);
 });
-
-//==== filter userData ====//
-router.get('/api/connections', async (req, res) => {
-  const userData = await User.findAll(req.body, { attributes: { exclude: ['password'] } })
-
-  if (!userData) {
-    res
-      .status(500)
-      .json({ message: 'Error getting user data' });
-    return;
-  }
-
-  res.send(userData);
-});
-
-//==== GET /API/Connections/:user_id -user_id = target_id ====//
-
-
-
-
-
 
 router.post('/logout', (req, res) => {
   if (req.session.logged_in) {
