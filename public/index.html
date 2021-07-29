@@ -2,7 +2,6 @@
 <html>
   <head>
     <title>Find Your Match</title>
-    <meta name = "viewport" content = "width = device-width, initial-scale = 1">      
     <link rel = "stylesheet"
        href = "https://fonts.googleapis.com/icon?family=Material+Icons">
     <link rel = "stylesheet"
@@ -11,8 +10,10 @@
        src = "https://code.jquery.com/jquery-2.1.1.min.js"></script>           
     <script src = "https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.3/js/materialize.min.js">
     </script> 
-    <link rel="stylesheet" type="text/css" href="style.css">
-    <link rel="html" href="signup.html">
+    <link rel="stylesheet" type="text/css" href="/public/css/style2.css">
+    <link rel="html" href="/public/signup.html">
+    <meta name = "viewport" content = "width = device-width, initial-scale = 1">      
+
   </head>
   <body>
     <header id="header">
@@ -26,9 +27,9 @@
     </header>
     <section>
       <h2 id="text"></br>Make Some Noise!</h2>
-      <img src="note.png" id="note">
-      <img src="note2.png" id="note2">
-      <img src="croud.png" id="croud">
+      <img src="/public/assets/Note.png" id="note">
+      <img src="/public/assets/note2.png" id="note2">
+      <img src="/public/assets/Crowd.png" id="crowd">
       <a href="#sec" id="btn">Login</a>
       <a href="#sec" id="btn">Sign Up</a>
     </section>
@@ -90,15 +91,12 @@
       </div>
     </div>
     <a href="#!">Create account</a>
-
-
-
-
+    <script type="module" src="/public/js/login.js"></script>
+<!-- Sign Up Section --> 
 <!-- Instrument Selector -->
-
 <!-- Genre Selector -->
     <script>
-      let croud = document.getElementById('croud');
+      let crowd = document.getElementById('crowd');
       let note = document.getElementById('note');
       let note2 = document.getElementById('note2');
       let text = document.getElementById('text');
