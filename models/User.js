@@ -56,16 +56,16 @@ User.init(
     connectionsList: {
       type: DataTypes.INTEGER,
       allowNull: true,
-      // get() {
-      //   return this.getDataValue('connectionsList').split(';');
-      // },
-      // set(val) {
-      //   this.setDataValue('connectionsList', val.join(';'));
-      // },
-      // references: {
-      //   model: 'connections',
-      //   key: 'user_id',
-      // },
+      get() {
+        return this.getDataValue('connectionsList').split(';');
+      },
+      set(val) {
+        this.setDataValue('connectionsList', val.join(';'));
+      },
+      references: {
+        model: 'connections',
+        key: 'user_id',
+      },
     },
   },
   {
