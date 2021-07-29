@@ -30,7 +30,7 @@ User.init(
       },
     },
     user_instrument: {
-      type: DataTypes.STRING,
+      type: DataTypes.INTEGER,
       allowNull: true,
       references: {
         model: 'instrument',
@@ -38,7 +38,7 @@ User.init(
       },
     },
     user_genre: {
-      type: DataTypes.STRING,
+      type: DataTypes.INTEGER,
       allowNull: true,
       references: {
         model: 'genre',
@@ -52,14 +52,6 @@ User.init(
     photo_str: {
       type: DataTypes.STRING,
       allowNull: true,
-    },
-    connections: {
-      type: DataTypes.ARRAY,
-      allowNull: true,
-      references: {
-        model: 'connections',
-        key: 'id',
-      },
     },
   },
   {
