@@ -2,7 +2,6 @@
 <html>
   <head>
     <title>Find Your Match</title>
-    <meta name = "viewport" content = "width = device-width, initial-scale = 1">      
     <link rel = "stylesheet"
        href = "https://fonts.googleapis.com/icon?family=Material+Icons">
     <link rel = "stylesheet"
@@ -11,8 +10,9 @@
        src = "https://code.jquery.com/jquery-2.1.1.min.js"></script>           
     <script src = "https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.3/js/materialize.min.js">
     </script> 
-    <link rel="stylesheet" type="text/css" href="style.css">
-    <link rel="html" href="signup.html">
+    <link rel="stylesheet" type="text/css" href="/css/style2.css">
+    <meta name = "viewport" content = "width = device-width, initial-scale = 1">      
+
   </head>
   <body>
     <header id="header">
@@ -21,14 +21,14 @@
         <li><a href="#" class="active">Home</a></li>
         <li><a href="#">Profile</a></li>
         <li><a href="#">Matches</a></li>
-        <li><a href="#">Collaboration</a></li>
+        <li><a href="#">Create An Account</a></li>
       </ul>
     </header>
     <section>
       <h2 id="text"></br>Make Some Noise!</h2>
-      <img src="note.png" id="note">
-      <img src="note2.png" id="note2">
-      <img src="croud.png" id="croud">
+      <img src="/assets/Note.png" id="note">
+      <img src="/assets/note2.png" id="note2">
+      <img src="/assets/Crowd.png" id="crowd">
       <a href="#sec" id="btn">Login</a>
       <a href="signup.html" target="_blank" id="btn">Sign Up</a>
     </section>
@@ -38,6 +38,7 @@
     </div>
 <!-- //Login Section -->
 
+      <div>
       <h2></h2>
       <p> Info about website! here 
         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed ac tempus risus, a interdum sapien. Integer auctor, lectus non dapibus luctus, sem velit rutrum ex, ullamcorper consequat ligula urna sed metus. Integer interdum lectus eget nibh condimentum dignissim. Quisque in metus rhoncus, sagittis nibh eget, euismod elit. Morbi sit amet dapibus velit. Etiam egestas lectus a sem egestas, at congue quam vulputate. Mauris eu laoreet libero. Etiam feugiat ornare ultricies. Aenean sollicitudin ante vel augue porttitor, sed auctor ligula gravida. Morbi sodales urna sit amet volutpat malesuada. Proin nec tellus sodales, venenatis purus sit amet, consectetur purus.
@@ -90,18 +91,11 @@
       </div>
     </div>
     <a href="#!">Create account</a>
-
-
-
-
+<!-- Sign Up Section --> 
 <!-- Instrument Selector -->
-
 <!-- Genre Selector -->
-
-
-
     <script>
-      let croud = document.getElementById('croud');
+      let crowd = document.getElementById('crowd');
       let note = document.getElementById('note');
       let note2 = document.getElementById('note2');
       let text = document.getElementById('text');
@@ -110,14 +104,14 @@
 
       window.addEventListener('scroll', function(){
         let value = window.scrollY;
-        croud.style.top = value * 0.25 + 'px';
+        crowd.style.top = value * 0.25 + 'px';
         text.style.top = 50 + value * -0.5 + '%';
-        btn.style.marginTop = value * 1.5 + 'px';
-        header.style.top = value * 0.5 + 'px';
+        btn.style.marginTop = value * 3 + 'px';
+        header.style.top = value * 1 + 'px';
         note.style.top = value * -1.5 + 'px';
         note.style.left = value * 2 + 'px';
         note2.style.top = value * -1.5 + 'px';
-        note2.style.left = value * -8 + 'px';
+        note2.style.left = value * -2 + 'px';
       })
     </script>
   </body>

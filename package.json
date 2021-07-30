@@ -1,7 +1,7 @@
 {
   "name": "crowd-funding",
   "version": "1.0.0",
-  "description": "",
+  "description": "[Timbre WireFrame.pdf](https://github.com/sxtnkyl/Timbre/files/6895481/Timbre.WireFrame.pdf)\r # Project 2: Timbre\r ## WHY IS THIS IDEA GOOD / WHY WOULD THIS IDEA BE BENEFICIAL?\r Timbre is a connection platform for musicians to find their band-mate soul-mates.\r Timbre is looking to \"bridge\" the gap for musical connections, and increase live musical performances.",
   "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
@@ -28,5 +28,13 @@
     "eslint": "^7.12.1",
     "eslint-config-prettier": "^6.15.0",
     "prettier": "^2.1.2"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sxtnkyl/Timbre.git"
+  },
+  "bugs": {
+    "url": "https://github.com/sxtnkyl/Timbre/issues"
+  },
+  "homepage": "https://github.com/sxtnkyl/Timbre#readme"
 }
