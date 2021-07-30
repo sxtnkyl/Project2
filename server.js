@@ -23,12 +23,12 @@ const sess = {
     db: sequelize,
   }),
 };
-//app.engine('handlebars', hbs.engine);
-//app.set('view engine', 'handlebars');
+app.engine('handlebars', hbs.engine);
+app.set('view engine', 'handlebars');
 app.use(session(sess));
 app.use(express.static(path.join(__dirname, 'public')));
  app.get("/*", (req, res) => {
-   res.sendFile(path.resolve(__dirname,"index.html"));
+   res.sendFile(path.resolve(__dirname,"public"));
 });
 
 
