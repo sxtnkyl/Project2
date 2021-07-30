@@ -4,7 +4,7 @@ const sequelize = require('../config/connection');
 
 class User extends Model {
   checkPassword(loginPw) {
-    return bcrypt.compareSync(loginPw, this.password);
+    return bcrypt.compare(loginPw, this.password);
   }
 }
 
@@ -52,6 +52,17 @@ User.init(
     photo_str: {
       type: DataTypes.STRING,
       allowNull: true,
+    },
+    connectionsList: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      defaultValue: '',
+      // get() {
+      //   return this.getDataValue('connectionsList').split(';');
+      // },
+      // set(val) {
+      //   this.setDataValue('connectionsList', val.join(';'));
+      // },
     },
   },
   {

@@ -1,8 +1,5 @@
 const router = require('express').Router();
-const Connection = require('mysql2/typings/mysql/lib/Connection');
 const { Project, User } = require('../models');
-const Genre = require('../models/Genre');
-const Instrument = require('../models/Instrument');
 const withAuth = require('../utils/auth');
 
 // Use withAuth middleware to prevent access to route
@@ -18,7 +15,7 @@ router.get('/profile', withAuth, async (req, res) => {
 
     res.render('profile', {
       ...user,
-      logged_in: true
+      logged_in: true,
     });
   } catch (err) {
     res.status(500).json(err);

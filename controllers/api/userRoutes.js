@@ -1,8 +1,10 @@
 const router = require('express').Router();
-const User = require('../../models');
+const { User } = require('../../models');
 const withAuth = require('../../utils/auth');
+const { Op } = require('sequelize');
 
 //===== signup =====//
+//body = username, password
 router.post('/signup', async (req, res) => {
   try {
     const userData = await User.create(req.body);
@@ -19,11 +21,11 @@ router.post('/signup', async (req, res) => {
 });
 
 //===== login =====//
+////TODO: backcheck relogin/bcrypt logic- works after signup, not after logout
 router.post('/login', async (req, res) => {
   const { username, password } = req.body;
   try {
     const userData = await User.findOne({ where: { username: username } });
-
     if (!userData) {
       res
         .status(400)
@@ -32,7 +34,7 @@ router.post('/login', async (req, res) => {
     }
 
     const validPassword = await userData.checkPassword(password);
-
+    console.log(validPassword);
     if (!validPassword) {
       res
         .status(400)
@@ -63,20 +65,36 @@ router.post('/logout', (req, res) => {
 });
 
 //==== search users, exclude password ====//
+////ex. http://localhost:3001/api/users/search?user_instrument=1&user_genre=1
+////ex. http://localhost:3001/api/users/search?id=1
 //TODO: update for pagination- first 20
 router.get('/search', async (req, res) => {
-  if (req.body) {
-    let { user_instrument, user_genre } = req.body;
+  if (req.query.id) {
+    let { id } = req.query;
+    try {
+      const user = await User.findByPk(id, {
+        attributes: { exclude: ['password'] },
+      });
+      res.status(200).json(user);
+    } catch (error) {
+      res.status(500).json({ message: 'Error getting user id' });
+    }
+  }
+  if (req.query.user_instrument || req.query.user_genre) {
+    let { user_instrument, user_genre } = req.query;
     try {
       const userData = await User.findAll({
         where: {
-          user_instrument: user_instrument,
-          user_genre: user_genre,
+          [Op.or]: [
+            { user_instrument: user_instrument || null },
+            { user_genre: user_genre || null },
+          ],
         },
         attributes: { exclude: ['password'] },
       });
       res.status(200).json(userData);
     } catch (error) {
+      console.log(error);
       res.status(500).json(error);
     }
   } else {
@@ -86,52 +104,18 @@ router.get('/search', async (req, res) => {
       res.status(500).json({ message: 'Error getting users' });
       return;
     }
-
-    res.send({ users: users });
+    // res.json({ message: 'WE DID IT' });
+    res.status(200).json(users);
   }
 });
-
-//==== get single user by id ====//
-////used when opening a single connection- bulk searches map user data
-router.get('/:id', async (req, res) => {
-  const user = await User.findByPk(req.params.id, {
-    attributes: { exclude: ['password'] },
-  });
-  if (!user) {
-    res.status(500).json({ message: 'Error getting user id' });
-    return;
-  }
-
-  res.send(user);
-});
-
-//==== user filter ====//
-//TODO: refactor this into bulk search
-// router.get('/user', async (req, res) => {
-//   const userInstrument = req.query.userInstrument;
-//   const userGenre = req.query.userGenre;
-//   const userContent = req.query.userContent;
-//   const userPhoto = req.query.userPhoto;
-//   const userConnections = req.query.connections;
-
-//   const userData = await User.findAll({
-//     where: {
-//       user_instrument: userInstrument,
-//       user_genre: userGenre,
-//       content: userContent,
-//       photo_str: userPhoto,
-//       connectionsList: userConnections,
-//     },
-//   });
-// });
 
 //==== update user info ====//
 //TODO: add option to update password
 router.put('/', withAuth, async (req, res) => {
-  let { id } = req.session;
+  let { user_id } = req.session;
   let { username, user_instrument, user_genre, content, photo_str } = req.body;
   try {
-    let findUser = await User.findByPk({ where: { id: id } });
+    let findUser = await User.findByPk(user_id);
     let updateUser = findUser.update({
       username: username,
       user_instrument: user_instrument,
