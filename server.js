@@ -25,11 +25,8 @@ const sess = {
 };
 app.engine('handlebars', hbs.engine);
 app.set('view engine', 'handlebars');
+
 app.use(session(sess));
-app.use(express.static(path.join(__dirname, 'public')));
- app.get("/*", (req, res) => {
-   res.sendFile(path.resolve(__dirname,"public"));
-});
 
 
 // Inform Express.js on which template engine to use
@@ -37,8 +34,8 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-
-app.use(routes);
+app.use(express.static(path.join(__dirname, 'public')));
+app.use(app.route);
 
 //force = true drops entire db
 sequelize.sync({ force: false }).then(() => {
