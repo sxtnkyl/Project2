@@ -23,10 +23,13 @@ const sess = {
     db: sequelize,
   }),
 };
-app.engine('handlebars', hbs.engine);
-app.set('view engine', 'handlebars');
-
+//app.engine('handlebars', hbs.engine);
+//app.set('view engine', 'handlebars');
 app.use(session(sess));
+app.use(express.static(path.join(__dirname, 'public')));
+ app.get("/*", (req, res) => {
+   res.sendFile(path.resolve(__dirname,"index.html"));
+});
 
 
 // Inform Express.js on which template engine to use
@@ -34,8 +37,8 @@ app.use(session(sess));
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-app.use(express.static(path.join(__dirname, 'public')));
-app.use(app.route);
+
+app.use(routes);
 
 //force = true drops entire db
 sequelize.sync({ force: false }).then(() => {
