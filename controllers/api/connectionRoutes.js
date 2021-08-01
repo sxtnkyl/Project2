@@ -2,22 +2,20 @@ const router = require('express').Router();
 const { Connections, Genre } = require('../../models/Connections');
 
 //==== find user connections ====//
-router.get('/test', async (req, res) => {
-  let { user_id } = req.query;
-  console.log(user_id);
+router.get('/', async (req, res) => {
+  let { id } = req.query;
   try {
-    // const con = await Connections.findByPk(user_id);
-    const con = await Connections.findOne({ where: { id: 1 } });
+    const userCons = await Connections.findByPk(id);
     // const userCons = await Connections.findAll({
     //   //where user is user ot target
-    //   where: { user_id: user_id },
+    //   where: { user_id: id },
     // });
     // const targetCons = await Connections.findAll({
     //   //where user is user ot target
     //   where: { target_id: user_id },
     // });
     // res.status(200).json({ usercons: userCons, targetcons: targetCons });
-    res.json(con);
+    res.status(200).json(userCons);
   } catch (error) {
     res.status(500).json({ message: 'Error getting connections', error });
   }
