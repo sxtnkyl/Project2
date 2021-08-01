@@ -1,2 +1,0 @@
-DROP DATABASE IF EXISTS timbre_db;
-CREATE DATABASE timbre_db;
