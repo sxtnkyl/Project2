@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const Connection = require('mysql2/typings/mysql/lib/Connection');
+const Connection = require('mysql2/typings/mysql/lib/Connections');
 const { Project, User } = require('../models');
 const Genre = require('../models/Genre');
 const Instrument = require('../models/Instrument');
