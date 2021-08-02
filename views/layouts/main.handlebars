@@ -13,35 +13,39 @@
        src = "https://code.jquery.com/jquery-2.1.1.min.js"></script>           
     <script src = "https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.3/js/materialize.min.js">
     </script> 
-  <link rel="stylesheet" type="text/css" href="/css/style2.css">
+  <link rel="stylesheet" href="/css/jass.css">
+  <link rel="stylesheet" href="/css/style.css">
 </head>
+
 
 <body>
   <div class="flex-column justify-space-around">
     <header class="display-flex justify-space-between align-center p-2">
       <h1>
-        <span role="img" aria-label="money">💸</span>
         <a href="/"class="logo">Timbre</a>
       </h1>
 
       <nav>
         <!-- Conditionally render login or logout links -->
         {{#if logged_in}}
-        <a href="public/js/profile.js">profile</a> |
+        <a href="/profile">profile</a> |
         <button class="no-button" id="logout">logout</button>
         {{else}}
-        <a href="public/js/login.js">Login</a>
-        <a href="public/js/signup.js">Sign Up</a>
+      <ul>
+        <a href="/login">Login</a>
+        <a href="/signup">Sign Up</a>
+      </ul>
         {{/if}}
       </nav>
     </header>
+
 
     <section>
       <h2 id="text"></br>Make Some Noise!</h2>
       <img src="/public/assets/Note.png" id="note">
       <img src="/public/assets/note2.png" id="note2">
       <img src="/public/assets/Crowd.png" id="crowd">
-      <a href="#sec" id="btn">Login</a>
+      <a href="/login" id="btn">Login</a>
     </section>
 
     <div class="sec" id="sec">
