@@ -60,12 +60,12 @@ User.init(
       type: DataTypes.STRING,
       allowNull: false,
       defaultValue: '',
-      get() {
-        return this.getDataValue('connectionsList').split(';');
-      },
-      set(val) {
-        this.setDataValue('connectionsList', val.join(';'));
-      },
+      // get() {
+      //   return this.getDataValue('connectionsList').split(';');
+      // },
+      // set(val) {
+      //   this.setDataValue('connectionsList', val.join(';'));
+      // },
     },
   },
   {
