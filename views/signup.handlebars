@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+{{!-- <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -12,7 +12,7 @@
        src = "https://code.jquery.com/jquery-2.1.1.min.js"></script>           
     <script src = "https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.3/js/materialize.min.js">
     </script> 
-    <link rel="stylesheet" type="text/css" href="/public/css/signup.css">
+    <link rel="stylesheet" type="text/css" href="/css/signup.css">
     <title>Sign Up</title>
 </head>
 <body>
@@ -20,7 +20,7 @@
     <section id="header">
         <h1>Make Music with local artists, or collaborate virtually <em>around the world</em>.</h1>
     </section>
-    <hr>
+    <hr> --}}
 <div class="row">
     <form class="col s12">
       <div class="row1">
@@ -71,6 +71,22 @@
   <section>
     <button id="submit">Submit</button>
 </section>
+<script src="/js/signup.js"></script>
+      </div> 
+    </form>
+  </div>
+  <center>
+  <section>
+    <a id="submitButton"class="waves-effect waves-light btn"><i class="material-icons left">music_note</i>Submit</a>
+</section>
 <script src="/public/js/signup.js"></script>
+</center>
+
+<script>
+  $(window).on('beforeunload', function() {
+  $('body').hide();
+  $(window).scrollTop(0);
+});
+</script>
 </body>
 </html>
