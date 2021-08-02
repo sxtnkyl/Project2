@@ -3,8 +3,11 @@ const bcrypt = require('bcrypt');
 const sequelize = require('../config/connection');
 
 class User extends Model {
-  checkPassword(loginPw) {
-    return bcrypt.compareSync(loginPw, this.password);
+  async checkPassword(loginPw) {
+    let test = await bcrypt.compare(loginPw, this.password);
+    let hashed = await bcrypt.hash(loginPw);
+    console.log(loginPw, hashed, test);
+    return test;
   }
 }
 
@@ -52,6 +55,21 @@ User.init(
     photo_str: {
       type: DataTypes.STRING,
       allowNull: true,
+    },
+    ip: {
+      type: DataTypes.STRING,
+      allowNull: true,
+    },
+    connectionsList: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      defaultValue: '',
+      // get() {
+      //   return this.getDataValue('connectionsList').split(';');
+      // },
+      // set(val) {
+      //   this.setDataValue('connectionsList', val.join(';'));
+      // },
     },
   },
   {

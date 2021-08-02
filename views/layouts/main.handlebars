@@ -27,7 +27,7 @@
       <nav>
         <!-- Conditionally render login or logout links -->
         {{#if logged_in}}
-        <a href="/profile">profile</a> |
+        <a href="public/js/profile.js">profile</a> |
         <button class="no-button" id="logout">logout</button>
         {{else}}
       <ul>
@@ -62,7 +62,7 @@
   </div>
   <!-- Render script for logged in users only -->
   {{#if logged_in}}
-  <script src="/js/logout.js"></script>
+  <script src="/public/js/logout.js"></script>
   {{/if}}
 
 
@@ -73,7 +73,6 @@
       let text = document.getElementById('text');
       let btn = document.getElementById('btn');
       let header = document.getElementById('header');
-
       window.addEventListener('scroll', function(){
         let value = window.scrollY;
         crowd.style.top = value * 0.25 + 'px';

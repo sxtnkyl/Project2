@@ -25,6 +25,7 @@ const sess = {
 };
 app.engine('handlebars', hbs.engine);
 app.set('view engine', 'handlebars');
+<<<<<<< HEAD
 
 
 
@@ -34,16 +35,27 @@ app.use(session(sess));
 //    res.render('login',{layout: 'main'});
 // });
 
+=======
+app.use(session(sess));
+app.use(express.static(path.join(__dirname, 'public')));
+>>>>>>> 4a99a864286733dcc6c07aa50490559817ee12c6
 
 // Inform Express.js on which template engine to use
-
+//handlebars go here
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(routes);
+app.get('/*', (req, res) => {
+  res.sendFile(path.resolve(__dirname, 'index.html'));
+});
 
 // force = true drops entire db
 // sequelize.sync({ force: false }).then(() => {
   app.listen(PORT, () => console.log('Now listening'));
+<<<<<<< HEAD
 // });
+=======
+});
+>>>>>>> 4a99a864286733dcc6c07aa50490559817ee12c6
