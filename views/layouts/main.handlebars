@@ -3,10 +3,17 @@
 
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Fund My Project!</title>
-  <link rel="stylesheet" href="/css/jass.css">
-  <link rel="stylesheet" href="/css/style.css">
+    <meta name = "viewport" content = "width = device-width, initial-scale = 1">   
+    <title>Timbre</title>
+        <link rel = "stylesheet"
+       href = "https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel = "stylesheet"
+       href = "https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.3/css/materialize.min.css">
+    <script type = "text/javascript"
+       src = "https://code.jquery.com/jquery-2.1.1.min.js"></script>           
+    <script src = "https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.3/js/materialize.min.js">
+    </script> 
+  <link rel="stylesheet" type="text/css" href="/css/style2.css">
 </head>
 
 <body>
@@ -14,18 +21,34 @@
     <header class="display-flex justify-space-between align-center p-2">
       <h1>
         <span role="img" aria-label="money">💸</span>
-        <a href="/">Fund My Project!</a>
+        <a href="/"class="logo">Timbre</a>
       </h1>
+
       <nav>
         <!-- Conditionally render login or logout links -->
         {{#if logged_in}}
-        <a href="/profile">profile</a> |
+        <a href="public/js/profile.js">profile</a> |
         <button class="no-button" id="logout">logout</button>
         {{else}}
-        <a href="/login">login</a>
+        <a href="public/js/login.js">Login</a>
+        <a href="public/js/signup.js">Sign Up</a>
         {{/if}}
       </nav>
     </header>
+
+    <section>
+      <h2 id="text"></br>Make Some Noise!</h2>
+      <img src="/public/assets/Note.png" id="note">
+      <img src="/public/assets/note2.png" id="note2">
+      <img src="/public/assets/Crowd.png" id="crowd">
+      <a href="#sec" id="btn">Login</a>
+    </section>
+
+    <div class="sec" id="sec">
+      <h2>Raising the Barre</h2>
+      <p>Find your newest collaborator through Timbre!</p>
+    </div>
+
     <main class="container container-fluid mt-5">
       <!-- Render the sub layout -->
       {{{ body }}}
@@ -34,11 +57,34 @@
       
     </footer>
   </div>
-
   <!-- Render script for logged in users only -->
   {{#if logged_in}}
-  <script src="/js/logout.js"></script>
+  <script src="/public/js/logout.js"></script>
   {{/if}}
+
+
+  <script>
+      let crowd = document.getElementById('crowd');
+      let note = document.getElementById('note');
+      let note2 = document.getElementById('note2');
+      let text = document.getElementById('text');
+      let btn = document.getElementById('btn');
+      let header = document.getElementById('header');
+
+      window.addEventListener('scroll', function(){
+        let value = window.scrollY;
+        crowd.style.top = value * 0.25 + 'px';
+        text.style.top = 50 + value * -0.5 + '%';
+        btn.style.marginTop = value * 3 + 'px';
+        header.style.top = value * 1 + 'px';
+        note.style.top = value * -1.5 + 'px';
+        note.style.left = value * 2 + 'px';
+        note2.style.top = value * -1.5 + 'px';
+        note2.style.left = value * -2 + 'px';
+      })
+  </script>
+
+
 </body>
 
 </html>
