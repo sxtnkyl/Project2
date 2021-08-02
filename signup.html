@@ -16,11 +16,22 @@
     <title>Sign Up</title>
 </head>
 <body>
+    <video autoplay muted loop id="crowdVideo">
+        <source src="./HomePage/CROWD_JUMPS_LIGHTS_PULSE.mp4" type="video/mp4">
+    </video>
+        <div class="videoContent">
+            <h1>“Talking about music is like dancing about architecture.”
+                ― Unknown</h1>
+        </div>
+
     <div id="marble"></div>
+
     <section id="header">
         <h1>Make Music with local artists, or collaborate virtually <em>around the world</em>.</h1>
     </section>
+    
     <hr>
+
 <div class="row">
     <form class="col s12">
       <div class="row1">
@@ -50,11 +61,21 @@
           <input id="email" type="email" class="validate">
           <label for="email">Email</label>
         </div>
-      </div>     
+      </div> 
     </form>
   </div>
+  <center>
   <section>
-    <button id="submit">Submit</button>
+    <a id="submitButton"class="waves-effect waves-light btn"><i class="material-icons left">music_note</i>Submit</a>
 </section>
+</center>
+
+<script>
+  $(window).on('beforeunload', function() {
+  $('body').hide();
+  $(window).scrollTop(0);
+});
+</script>
+
 </body>
 </html>

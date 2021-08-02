@@ -1,4 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Red+Hat+Display:wght@500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Sorts+Mill+Goudy&display=swap');
+
+
 
 * {
     padding: 0;
@@ -9,16 +12,39 @@ html {
     height: 100%;
 }
 
+
 body {
     background-image: linear-gradient(to bottom right, rgb(23, 92, 172), rgb(108, 54, 196));
     
 }
 
+#crowdVideo {
+    position: absolute;
+    bottom: 00px; 
+    z-index: -950;
+    width: 100%;  
+}
+
+.videoContent {
+  font-family: 'Sorts Mill Goudy', serif;
+  position: absolute;
+  word-wrap: break-word;
+  bottom: 500px;
+  text-align: center;
+  background: rgba(0, 0, 0, 0.5);
+  color: #f1f1f1;
+  width: 100%;
+  padding: 20px;
+  
+}
+
 #marble {
-    margin-top: 80px;
+    position: relative;
+    z-index: 900, !important;
+    top: 300px;
     margin-left: auto;
     margin-right: auto;
-    margin-bottom: 80px;
+    margin-bottom: 400px;
     width: 350px;
     height: 350px;
     border-radius: 50%;
@@ -34,6 +60,9 @@ body {
 }
 
 #header {
+    position: relative;
+    justify-content: center;
+    display: flex;
     color: rgb(255, 220, 241);
     font-family: 'Red Hat Display', sans-serif;
     text-align: center;
@@ -88,3 +117,11 @@ hr {
     margin-top: 70px;
     width: 90px;
 }
+
+#submitButton {
+    background-color: rgb(255, 111, 255);
+    position: relative;
+    margin-top: 60px;
+    margin-bottom: 25px;
+}
+
