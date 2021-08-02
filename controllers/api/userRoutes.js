@@ -7,7 +7,7 @@ const { Op } = require('sequelize');
 //body = username, password
 router.post('/signup', async (req, res) => {
   try {
-    const userData = await User.create(req.body);
+    const userData = await User.create({ ...req.body, ip: req.ip });
 
     req.session.save(() => {
       req.session.user_id = userData.id;
@@ -41,6 +41,8 @@ router.post('/login', async (req, res) => {
         .json({ message: 'Incorrect email or password, please try again' });
       return;
     }
+
+    const updateIp = await userData.update({ ip: req.ip });
 
     req.session.save(() => {
       req.session.user_id = userData.id;

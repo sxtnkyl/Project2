@@ -56,6 +56,10 @@ User.init(
       type: DataTypes.STRING,
       allowNull: true,
     },
+    ip: {
+      type: DataTypes.STRING,
+      allowNull: true,
+    },
     connectionsList: {
       type: DataTypes.STRING,
       allowNull: false,
