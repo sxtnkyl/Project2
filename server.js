@@ -12,7 +12,7 @@ const app = express();
 const PORT = process.env.PORT || 3001;
 
 // Set up Handlebars.js engine with custom helpers
-//const hbs = exphbs.create({ helpers }); more changes
+const hbs = exphbs.create({ helpers });
 
 const sess = {
   secret: 'Super secret secret',
@@ -25,17 +25,19 @@ const sess = {
 };
 app.engine('handlebars', hbs.engine);
 app.set('view engine', 'handlebars');
-
 app.use(session(sess));
-
+app.use(express.static(path.join(__dirname, 'public')));
 
 // Inform Express.js on which template engine to use
-
+//handlebars go here
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-app.use(express.static(path.join(__dirname, 'public')));
-app.use(app.route);
+
+app.use(routes);
+app.get('/*', (req, res) => {
+  res.sendFile(path.resolve(__dirname, 'index.html'));
+});
 
 //force = true drops entire db
 sequelize.sync({ force: false }).then(() => {
