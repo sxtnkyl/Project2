@@ -32,7 +32,7 @@ app.engine('handlebars', exphbs({
 // app.use(session(sess));
 app.use(express.static(path.join(__dirname, 'public')));
  app.get("/*", (req, res) => {
-   res.render('homepage',{layout: 'main'});
+   res.render('login',{layout: 'main'});
 });
 
 
