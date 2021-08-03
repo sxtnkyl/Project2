@@ -1,25 +1,28 @@
 const signupFormHandler = async (event) => {
   event.preventDefault();
 
-  const first_name = document.querySelector('#first_name-signup').value.trim();
-  const last_name = document.querySelector('#last_name-signup').value.trim();
-  const instrument = document.querySelector('#instrument-signup').value.trim();
-  const genre = document.querySelector('#genre-signup').value.trim();
-  const band = document.querySelector('#band-signup').value.trim();
+  // const instrument = document.querySelectorAll(
+  //   'input[name="instrument"]:checked'
+  // )[0].value;
+  // const genre = document.querySelectorAll('input[name="genre"]:checked')[0]
+  //   .value;
   const username = document.querySelector('#username-signup').value.trim();
-  const email = document.querySelector('#email-signup').value.trim();
   const password = document.querySelector('#password-signup').value.trim();
-  
 
-  if (name && email && password) {
-    const response = await fetch('/api/users', {
+  if (username && password) {
+    const data = {
+      username: username,
+      password: password,
+    };
+
+    const response = await fetch('/api/users/signup', {
       method: 'POST',
-      body: JSON.stringify({ first_name, last_name, instrument, genre, band, username, email, password }),
+      body: JSON.stringify(data),
       headers: { 'Content-Type': 'application/json' },
     });
 
     if (response.ok) {
-      console.log("click sign up button")
+      console.log('click sign up button');
       document.location.replace('/profile');
     } else {
       alert(response.statusText);
@@ -27,5 +30,5 @@ const signupFormHandler = async (event) => {
   }
 };
 document
-.querySelector('.signup-form')
-.addEventListener('submit', signupFormHandler);
+  .querySelector('.signup-form')
+  .addEventListener('submit', signupFormHandler);

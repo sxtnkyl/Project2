@@ -6,8 +6,9 @@ const { Op } = require('sequelize');
 //===== signup =====//
 //body = username, password
 router.post('/signup', async (req, res) => {
+  const testIP = '123.123.1.1';
   try {
-    const userData = await User.create({ ...req.body, ip: req.ip });
+    const userData = await User.create({ ...req.body, ip: testIP });
 
     req.session.save(() => {
       req.session.user_id = userData.id;
@@ -42,13 +43,15 @@ router.post('/login', async (req, res) => {
       return;
     }
 
-    const updateIp = await userData.update({ ip: req.ip });
+    // const updateIp = await userData.update({ ip: req.ip });
 
     req.session.save(() => {
       req.session.user_id = userData.id;
       req.session.logged_in = true;
 
-      res.json({ user: userData, message: 'You are now logged in!' });
+      res
+        .status(200)
+        .json({ user: userData, message: 'You are now logged in!' });
     });
   } catch (err) {
     res.status(500).json(err);

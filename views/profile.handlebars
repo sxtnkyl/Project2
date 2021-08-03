@@ -1,6 +1,6 @@
 <div class="row">
   <div class="col-auto">
-    <h2>Hey, {{name}}!</h2>
+    <h2>Hey, {{userInfo.username}}!</h2>
   </div>
 </div>
 
@@ -8,36 +8,73 @@
   <div class="col-md-6">
     <h3>Your Music Profile:</h3>
 
-    <form class="form new-project-form">
-      <div class="form-group">
-        <label for="profile-name">Name:</label>
-        <input class="form-input" type="text" id="profile-name" name="profile-name" />
+    <form class="form new-profile-form">
+      <div class="form-group" id="instrument-signup">
+        <label for="instrument-signup">Instrument:</label>
+        <input type="radio" id="1" name="instrument" value="1">
+        <label for="1">Guitar</label><br>
+        <input type="radio" id="2" name="instrument" value="2">
+        <label for="2">Bass</label><br>
+        <input type="radio" id="3" name="instrument" value="3">
+        <label for="3">Drums</label>
+        <input type="radio" id="4" name="instrument" value="4">
+        <label for="4">Keyboard</label><br>
+        <input type="radio" id="5" name="instrument" value="5">
+        <label for="5">Vocals</label>
       </div>
       <div class="form-group">
-        <label for="profile-instrument">Instrument:</label>
-        <input class="form-input" type="text" id="profile-instrument" name="profile-instrument" />
-      </div>
-      <div class="form-group">
-        <label for="profile-genre">Genre:</label>
-        <textarea class="form-input" id="profile-genre" name="profile-genre"></textarea>
-      </div>
-      <div class="form-group">
-        <button type="submit" class="btn btn-primary">Search!</button>
+        <label for="genre-signup">Genre:</label>
+        <input type="radio" id="6" name="genre" value="6">
+        <label for="6">Rock</label><br>
+        <input type="radio" id="7" name="genre" value="7">
+        <label for="7">Jazz</label><br>
+        <input type="radio" id="8" name="genre" value="8">
+        <label for="8">Country</label>
+        <input type="radio" id="9" name="genre" value="9">
+        <label for="9">Disco</label><br>
+        <input type="radio" id="10" name="genre" value="10">
+        <label for="10">Reggae</label>
       </div>
     </form>
   </div>
 
-  {{#if matched.length}}
+  {{#if userInfo}}
   <div class="col-md-6 project-list">
     <h3>Current Matches:</h3>
 
-    {{#each matched as |matched|}}
+    {{#each userCons as |conns|}}
     <div class="row mb-2">
       <div class="col-md-8">
-        <h4><a href="/matched/{{matched.id}}">{{matched.name}}</a></h4>
+        <h4>{{conns.id}}</h4>
+      </div>
+      <div class="col-md-8">
+        <h4>{{conns.user_id}}</h4>
+      </div>
+      <div class="col-md-8">
+        <h4>{{conns.target_id}}</h4>
+      </div>
+      <div class="col-md-8">
+        <h4>{{conns.accepted}}</h4>
       </div>
       <div class="col-md-4">
-        <button class="btn btn-sm btn-danger" data-id="{{matched.id}}">DELETE</button>
+        <button class="btn btn-sm btn-danger" data-id="{{conns.id}}">DELETE</button>
+      </div>
+    </div>
+    {{/each}}
+
+    {{#each userTargets as |conns|}}
+    <div class="row mb-2">
+      <div class="col-md-8">
+        <h4>{{conns.user_id}}</h4>
+      </div>
+      <div class="col-md-8">
+        <h4>{{conns.target_id}}</h4>
+      </div>
+      <div class="col-md-8">
+        <h4>{{conns.accepted}}</h4>
+      </div>
+      <div class="col-md-4">
+        <button class="btn btn-sm btn-danger" data-id="{{conns.id}}">DELETE</button>
       </div>
     </div>
     {{/each}}

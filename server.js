@@ -26,14 +26,11 @@ const sess = {
 app.engine('handlebars', hbs.engine);
 app.set('view engine', 'handlebars');
 
-
-
 app.use(session(sess));
 
 //  app.get("/*", (req, res) => {
 //    res.render('login',{layout: 'main'});
 // });
-
 
 // Inform Express.js on which template engine to use
 //handlebars go here
@@ -47,6 +44,6 @@ app.get('/*', (req, res) => {
 });
 
 // force = true drops entire db
-// sequelize.sync({ force: false }).then(() => {
+sequelize.sync({ force: false }).then(() => {
   app.listen(PORT, () => console.log('Now listening'));
-// });
+});
