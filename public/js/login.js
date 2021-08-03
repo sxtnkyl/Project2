@@ -48,12 +48,12 @@ const signupFormHandler = async (event) => {
       headers: { 'Content-Type': 'application/json' },
     });
 
-    // if (response.ok) {
-    //   console.log('click sign up button');
-    //   document.location.replace('/profile');
-    // } else {
-    //   alert(response.statusText);
-    // }
+    if (response.ok) {
+      console.log('click sign up button');
+      document.location.replace('/profile');
+    } else {
+      alert(response.statusText);
+    }
   }
 };
 document

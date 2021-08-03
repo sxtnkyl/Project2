@@ -21,17 +21,20 @@ router.get('/profile', async (req, res) => {
       //where user is user ot target
       where: { user_id: id },
     });
+
     const targetCons = await Connections.findAll({
       //where user is user ot target
       where: { target_id: id },
     });
 
-    res.render('profile', {
+    const profileData = {
       userInfo: userData.dataValues,
-      userTargets: [targetCons[0].dataValues],
-      userCons: [userCons[0].dataValues],
-      logged_in: true,
-    });
+      userTargets: targetCons.length ? [targetCons[0].dataValues] : [],
+      userCons: userCons.length ? [userCons[0].dataValues] : [],
+      sess: req.session,
+    };
+
+    res.render('profile', profileData);
   } catch (err) {
     res.status(500).json(err);
   }
@@ -46,7 +49,10 @@ router.get('/login', (req, res) => {
 
 // //base route
 router.get('/', (req, res) => {
-  res.render('login');
+  console.log(req.session);
+  if (req.session.user_id) {
+    res.redirect('/profile');
+  } else res.render('login');
 });
 
 // //new user
