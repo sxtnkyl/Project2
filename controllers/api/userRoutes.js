@@ -75,6 +75,7 @@ router.post('/logout', (req, res) => {
 ////ex. http://localhost:3001/api/users/search?id=1
 //TODO: update for pagination- first 20
 router.get('/search', async (req, res) => {
+  //by single id
   if (req.query.id) {
     let { id } = req.query;
     try {
@@ -86,6 +87,7 @@ router.get('/search', async (req, res) => {
       res.status(500).json({ message: 'Error getting user id' });
     }
   }
+  //with filters
   if (req.query.user_instrument || req.query.user_genre) {
     let { user_instrument, user_genre } = req.query;
     try {
@@ -104,6 +106,7 @@ router.get('/search', async (req, res) => {
       res.status(500).json(error);
     }
   } else {
+    //default
     const users = await User.findAll({ attributes: { exclude: ['password'] } });
 
     if (!users) {

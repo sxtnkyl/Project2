@@ -27,11 +27,22 @@ router.get('/profile', async (req, res) => {
       where: { target_id: id },
     });
 
+    const otherUsers = await User.findAll({
+      attributes: { exclude: ['password'] },
+    });
+
+    let mapped = [];
+    for (let key in otherUsers) {
+      mapped.push(otherUsers[key].dataValues);
+    }
+    console.log(mapped);
+
     const profileData = {
       userInfo: userData.dataValues,
       userTargets: targetCons.length ? [targetCons[0].dataValues] : [],
       userCons: userCons.length ? [userCons[0].dataValues] : [],
       sess: req.session,
+      others: mapped,
     };
 
     res.render('profile', profileData);

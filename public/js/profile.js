@@ -32,11 +32,27 @@ const newFormHandler = async (event) => {
   }
 };
 
+const resolveButtonHandler = async (event) => {
+  if (event.target.hasAttribute('data-id')) {
+    const id = event.target.getAttribute('data-id');
+
+    const response = await fetch(`/api/matched/resolve?id=${id}`, {
+      method: 'PUT',
+    });
+
+    if (response.ok) {
+      document.location.replace('/profile');
+    } else {
+      alert('Failed to unmatch profile');
+    }
+  }
+};
+
 const delButtonHandler = async (event) => {
   if (event.target.hasAttribute('data-id')) {
     const id = event.target.getAttribute('data-id');
 
-    const response = await fetch(`/api/matched/${id}`, {
+    const response = await fetch(`/api/matched/?id=${id}`, {
       method: 'DELETE',
     });
 

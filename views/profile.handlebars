@@ -74,12 +74,36 @@
         <h4>{{conns.accepted}}</h4>
       </div>
       <div class="col-md-4">
+        <button class="btn btn-sm" data-id="{{conns.id}}">ACCEPT</button>
         <button class="btn btn-sm btn-danger" data-id="{{conns.id}}">DELETE</button>
+      </div>
+    </div>
+    {{/each}}
+
+<h3>Find an Artist:</h3>
+    {{#each others as |other|}}
+    <div class="row mb-2">
+      <div class="col-md-8">
+        <h4>{{other.username}}</h4>
+      </div>
+      <div class="col-md-8">
+        <h4>{{other.user_instrument}}</h4>
+      </div>
+      <div class="col-md-8">
+        <h4>{{other.user_genre}}</h4>
+      </div>
+      <div class="col-md-8">
+        <h4>{{other.content}}</h4>
+      </div>
+      <div class="col-md-4">
+        <button class="btn btn-sm" data-id="{{other.id}}">CONNECT</button>
       </div>
     </div>
     {{/each}}
   </div>
   {{/if}}
+
+  
 
   <button id="logout" class="btn btn-primary">Logout</button>
 </div>
